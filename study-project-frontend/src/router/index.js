@@ -7,9 +7,13 @@ const router = createRouter({
     name:'welcome',
     component:() => import('@/views/WelcomeView.vue'),
     children:[{
-      path:'/',
+      path:'',
       name:'welcome-login',
       component:() => import('@/components/welcome/LoginPage.vue')
+    },{
+      path:'register',
+      name:'welcome-register',
+      component:() => import('@/components/welcome/RegisterPage.Vue.vue')
     }
     ]
   },{

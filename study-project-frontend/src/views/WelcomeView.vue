@@ -10,8 +10,10 @@
       <div>System.out.println("Hello World!")</div>
     </div>
     <div style="width: 400px;background-color: white">
-      <router-view/>
 
+      <transition name="el-fade-in-linear">
+        <router-view/>
+      </transition>
     </div>
   </div>
 
