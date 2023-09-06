@@ -9,11 +9,12 @@
       <div>在这里你可以学习如何使用Java,如何搭建网站</div>
       <div>System.out.println("Hello World!")</div>
     </div>
-    <div style="width: 400px;background-color: white">
-
-      <transition name="el-fade-in-linear">
-        <router-view/>
-      </transition>
+    <div style="width: 400px;background-color: white;z-index: 1">
+      <router-view v-slot="{Component}">
+        <transition mode="out-in" name="el-fade-in-linear">
+          <component :is="Component"/>
+        </transition>
+      </router-view>
     </div>
   </div>
 
