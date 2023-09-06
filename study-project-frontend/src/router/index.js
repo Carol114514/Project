@@ -13,7 +13,7 @@ const router = createRouter({
     },{
       path:'register',
       name:'welcome-register',
-      component:() => import('@/components/welcome/RegisterPage.Vue.vue')
+      component:() => import('@/components/welcome/RegisterPage.vue')
     }
     ]
   },{
