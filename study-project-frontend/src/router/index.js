@@ -10,21 +10,32 @@ const router = createRouter({
     children:[{
       path:'',
       name:'welcome-login',
-      component:() => import('@/components/welcome/LoginPage.vue')
+      component:() => import('@/views/welcome/LoginPage.vue')
     },{
       path:'register',
       name:'welcome-register',
-      component:() => import('@/components/welcome/RegisterPage.vue')
+      component:() => import('@/views/welcome/RegisterPage.vue')
     }, {
       path: 'forget',
       name: 'welcome-forget',
-      component: () => import('@/components/welcome/ForgetPage.vue')
+      component: () => import('@/views/welcome/ForgetPage.vue')
     }
     ]
   },{
     path:'/index',
     name:'index',
-    component:() => import('@/views/IndexView.vue')
+    component:() => import('@/views/IndexView.vue'),
+    children:[
+        {
+          path: '',
+          name: 'index-list',
+          component: () => import('@/views/index/PostList.vue')
+        },{
+          path: 'settings',
+          name: 'index-settings',
+          component: () => import('@/views/index/Settings.vue')
+        }
+    ]
   }
   ]
 })
