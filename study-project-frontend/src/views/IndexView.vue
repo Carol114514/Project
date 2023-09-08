@@ -83,7 +83,7 @@
 </template>
 
 <script setup>
-import {get} from "@/net"
+import {logout} from "@/net"
 import {ElMessage} from "element-plus";
 import router from "@/router";
 import {useStore} from "@/stores";
@@ -93,14 +93,7 @@ import {ref} from "vue";
 const store = useStore()
 const isCollapse = ref(true)
 
-const logout = () =>{
-  get('/api/auth/logout' ,(message)=>{
-    ElMessage.success(message)
-    store.auth.user = null
-    localStorage.removeItem('user')
-    router.push('/')
-  })
-}
+
 </script>
 
 <style scoped>

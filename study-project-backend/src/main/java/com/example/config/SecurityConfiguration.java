@@ -115,7 +115,8 @@ public class SecurityConfiguration {
         response.setCharacterEncoding("utf-8");
         if (exception instanceof BadCredentialsException){
             response.getWriter().write(JSONObject.toJSONString(RestBean.failure(403,exception.getMessage())));
+        } else {
+            response.getWriter().write(JSONObject.toJSONString(RestBean.failure(401,exception.getMessage())));
         }
-        response.getWriter().write(JSONObject.toJSONString(RestBean.failure(401,exception.getMessage())));
     }
 }

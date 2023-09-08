@@ -1,11 +1,14 @@
 package com.example.entity.user;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 @Data
 public class AccountInfo {
+    private final String USERNAME_REGEX = "^[a-zA-Z0-9一-龥]+$";
     int uid;
+    @Pattern(regexp = USERNAME_REGEX)
     @Length(min = 2 , max = 8)
     String username;
     String sex;

@@ -43,4 +43,13 @@ function get(url,success,failure = defaultFailure,error = defaultError){
     }).catch(error)
 }
 
-export { get,post }
+const logout = () =>{
+    get('/api/auth/logout' ,(message)=>{
+        ElMessage.success(message)
+        store.auth.user = null
+        localStorage.removeItem('user')
+        router.push('/')
+    })
+}
+
+export { get,post,logout }
