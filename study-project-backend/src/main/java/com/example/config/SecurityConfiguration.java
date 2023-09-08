@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -112,6 +113,9 @@ public class SecurityConfiguration {
 
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         response.setCharacterEncoding("utf-8");
+        if (exception instanceof BadCredentialsException){
+            response.getWriter().write(JSONObject.toJSONString(RestBean.failure(403,exception.getMessage())));
+        }
         response.getWriter().write(JSONObject.toJSONString(RestBean.failure(401,exception.getMessage())));
     }
 }
