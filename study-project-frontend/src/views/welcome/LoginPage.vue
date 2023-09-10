@@ -40,7 +40,7 @@
 import {Lock, User} from '@element-plus/icons-vue'
 import {reactive} from "vue";
 import {ElMessage} from "element-plus";
-import {get, post} from "@/net";
+import {me, post} from "@/net";
 import router from "@/router";
 import {useStore} from "@/stores";
 
@@ -62,13 +62,7 @@ const login = () => {
       remember: form.remember
     },(message) => {
       ElMessage.success(message)
-      get('/api/user/me', (message) => {
-        store.auth.user = message
-        localStorage.setItem("user",JSON.stringify(message))
-        router.push('/index')
-      }, () => {
-        store.auth.user = null
-      })
+      me(true)
     })
   }
 }

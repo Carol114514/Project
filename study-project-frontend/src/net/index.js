@@ -52,4 +52,17 @@ const logout = () =>{
     })
 }
 
-export { get,post,logout }
+const me = (index = false) => {
+    get('/api/user/me',(message) => {
+        store.auth.user = message
+        localStorage.setItem("user",JSON.stringify(message))
+        if (index){
+            router.push('/index')
+        }
+
+    }, () => {
+        store.auth.user = null
+    })
+}
+
+export { get,post,logout,me }

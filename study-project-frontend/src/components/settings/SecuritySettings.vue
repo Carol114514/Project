@@ -47,9 +47,11 @@
 <script setup>
 import {reactive, ref} from "vue";
 import {Lock, Message, Select} from "@element-plus/icons-vue";
-import {get, logout, post} from "@/net";
+import {logout, post} from "@/net";
 import {ElMessage} from "element-plus";
+import {useStore} from "@/stores";
 
+const store = useStore()
 const emailForm = ref()
 const passwordForm = ref()
 const securityForm = reactive({

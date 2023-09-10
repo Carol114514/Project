@@ -44,7 +44,10 @@ import {reactive, ref} from "vue";
 import {Select} from "@element-plus/icons-vue";
 import {post} from "@/net";
 import {ElMessage} from "element-plus";
+import {useStore} from "@/stores";
 
+const store = useStore()
+const form = ref()
 const save = () => {
   form.value.validate((isValid) => {
     if (isValid){
@@ -58,7 +61,7 @@ const save = () => {
 
 }
 
-const form = ref()
+
 const infoForm = reactive({
   username: null,
   desc: '',
